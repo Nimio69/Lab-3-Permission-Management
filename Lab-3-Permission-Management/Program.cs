@@ -31,10 +31,42 @@ namespace Lab_3_Permission_Management
             /**
              * Look at tasks description in lab3.1 and complete the remaining tasks
              */
-            
-            
+
+            //Manager
+            managerUser.multiplyPermission(Permissions.Read, Permissions.Write);
+            managerUser.AddPermission(Permissions.Execute);
+
+            if (managerUser.HasPermission(Permissions.Execute))
+                Console.WriteLine("Manager HAS Execute permission");
+            else
+                Console.WriteLine("Manager does NOT have Execute permission");
+
+            //Senior
+            SeniorUser.multiplyPermission(Permissions.Read, Permissions.Write);
+            SeniorUser.RemovePermission(Permissions.Write);
+
+            if (SeniorUser.HasPermission(Permissions.Write))
+                Console.WriteLine("Senior HAS Write permission");
+            else
+                Console.WriteLine("Senior does NOT have Write permission");
 
 
+            //Admin
+            adminUser.multiplyPermission(Permissions.Read, Permissions.Write);
+            adminUser.AddPermission(Permissions.Execute);
+
+            Permissions full = Permissions.Read | Permissions.Write | Permissions.Execute;
+            if (adminUser.HasPermission(full))
+                Console.WriteLine("Admin HAS full permissions");
+            else
+                Console.WriteLine("Admin does NOT have full permissions");
+
+
+
+            
+            Console.ReadLine(); 
         }
-    }
+
+
+    } 
 }
